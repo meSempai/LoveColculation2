@@ -1,13 +1,15 @@
 package com.example.lovecolculation
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.example.lovecolculation.remote.LoveApi
 import com.example.lovecolculation.remote.LoveModel
 import com.example.lovecolculation.remote.RetrofitService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
-class Repository {
+class Repository @Inject constructor(val api: LoveApi){
 
     fun getLove(firstName: String, secondName: String): MutableLiveData<LoveModel> {
         val liveLove = MutableLiveData<LoveModel>()
@@ -25,3 +27,5 @@ class Repository {
         return liveLove
     }
 }
+
+

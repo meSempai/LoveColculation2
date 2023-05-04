@@ -10,14 +10,16 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.lovecolculation.LoveViewModel
-import com.example.lovecolculation.R
-import com.example.lovecolculation.databinding.FragmentCalculateBinding
 import com.example.lovecolculation.remote.LoveModel
 import com.example.lovecolculation.remote.RetrofitService
+import com.geektech.lovecalculator.R
+import com.geektech.lovecalculator.databinding.FragmentCalculateBinding
+import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+@AndroidEntryPoint
 class CalculateFragment : Fragment() {
     private lateinit var binding: FragmentCalculateBinding
 

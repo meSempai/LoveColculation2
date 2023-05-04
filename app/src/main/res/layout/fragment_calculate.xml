@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="12dp"
-    tools:context=".fragments.CalculateFragment">
+    tools:context="com.example.lovecolculation.MainActivity">
 
     <EditText
         android:id="@+id/first_name"

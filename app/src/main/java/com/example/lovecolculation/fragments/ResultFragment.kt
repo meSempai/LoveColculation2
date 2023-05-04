@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.lovecolculation.databinding.FragmentResultBinding
 import com.example.lovecolculation.remote.LoveModel
+import com.geektech.lovecalculator.databinding.FragmentResultBinding
 
 
 class ResultFragment : Fragment() {

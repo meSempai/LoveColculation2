@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_gragh"
-    app:startDestination="@id/calculateFragment">
+    android:id="@+id/navigation"
+    app:startDestination="@id/onBoardFragment">
 
     <fragment
         android:id="@+id/calculateFragment"
         android:name="com.example.lovecolculation.fragments.CalculateFragment"
-        android:label="fragment_calculate"
-        tools:layout="@layout/fragment_calculate" />
-
+        android:label="CalculateFragment" />
     <fragment
-        android:id="@+id/resultFragment"
+        android:id="@+id/resaultFragment"
         android:name="com.example.lovecolculation.fragments.ResultFragment"
-        android:label="fragment_result"
-        tools:layout="@layout/fragment_result" />
+        android:label="ResaultFragment" />
     <fragment
         android:id="@+id/onBoardFragment"
         android:name="com.example.lovecolculation.ui.OnBoardFragment"
