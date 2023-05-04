@@ -39,7 +39,7 @@ class ResultFragment : Fragment() {
             sname.text = result.secondName
             percent.text = result.percentage
             resultt.text = result.result
-
+            findNavController().navigateUp()
         }
     }
 }

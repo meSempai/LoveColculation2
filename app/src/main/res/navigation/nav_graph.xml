@@ -16,4 +16,8 @@
         android:name="com.example.lovecolculation.fragments.ResultFragment"
         android:label="fragment_result"
         tools:layout="@layout/fragment_result" />
+    <fragment
+        android:id="@+id/onBoardFragment"
+        android:name="com.example.lovecolculation.ui.OnBoardFragment"
+        android:label="OnBoardFragment" />
 </navigation>

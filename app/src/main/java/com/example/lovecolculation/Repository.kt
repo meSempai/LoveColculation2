@@ -1,5 +1,4 @@
 package com.example.lovecolculation
-
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.lovecolculation.remote.LoveModel
