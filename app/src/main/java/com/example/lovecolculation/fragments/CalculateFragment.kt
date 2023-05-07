@@ -1,5 +1,6 @@
 package com.example.lovecolculation.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,6 +10,8 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.lovecolculation.App
+import com.example.lovecolculation.HistoryActivity
 import com.example.lovecolculation.LoveViewModel
 import com.example.lovecolculation.remote.LoveModel
 import com.example.lovecolculation.remote.RetrofitService
@@ -41,13 +44,18 @@ class CalculateFragment : Fragment() {
 
     private fun initListener() {
         with(binding) {
+            btnhistory.setOnClickListener {
+                startActivity(Intent(this@CalculateFragment, HistoryActivity::class.java))
+            }
             calculate.setOnClickListener {
                 RetrofitService().api.percentageNames(firstName.text.toString(),
                     secondName.text.toString()).enqueue(object : Callback<LoveModel> {
                     override fun onResponse(call: Call<LoveModel>, response: Response<LoveModel>) {
                         if (response.isSuccessful) {
+                            App.appDatabase.getDao()
+                                .insert(LoveModel("firstname", "secondname", "", ""))
                             Log.e("ololo", "onResponse:${response.body()} ")
-                            findNavController().navigate(R.id.resultFragment,
+                            findNavController().navigate(R.id.resultt,
                                 bundleOf("Result" to response.body()))
                         }
                     }

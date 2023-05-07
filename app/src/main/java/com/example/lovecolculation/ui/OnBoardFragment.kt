@@ -7,14 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.lovecolculation.Pref
-import com.example.lovecolculation.R
-import com.example.lovecolculation.databinding.FragmentOnBoardBinding
 import com.example.lovecolculation.ui.adapter.OnBoardAdapter
+import com.geektech.lovecalculator.R
+import com.geektech.lovecalculator.databinding.FragmentOnBoardBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class OnBoardFragment: Fragment() {
+class
+OnBoardFragment: Fragment() {
 
     lateinit var binding : FragmentOnBoardBinding
     lateinit var adapter: OnBoardAdapter
