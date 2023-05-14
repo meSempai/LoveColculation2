@@ -4,35 +4,38 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import com.example.lovecolculation.R
-import com.example.lovecolculation.databinding.ItemOnBoardBinding
+
 import com.example.lovecolculation.ui.OnBoard
+import com.geektech.lovecalculator.R
+import com.geektech.lovecalculator.databinding.ItemOnBoardBinding
 
-class OnBoardAdapter( private val onClick: () -> Unit) : RecyclerView.Adapter<OnBoardAdapter.OnBoardingViewHolder>() {
+class OnBoardAdapter(private val onStartClick: () -> Unit) :
+    RecyclerView.Adapter<OnBoardAdapter.OnBoardViewHolder>() {
 
-    private val data = arrayListOf<OnBoard>(
+    private val data = arrayListOf(
         OnBoard(
-            R.drawable.first,
-            "Have a good time You should take the time to help those who need you",
+            "Have a good time",
+            "You should take the time to help those who need you",
+            R.raw.delivery
         ),
         OnBoard(
-            R.drawable.second,
-            "Cherishing Love It is now longer possible for you to cherish love",
+            "Cherishing love",
+            "It is now no longer possible for you to cherish love",
+            R.raw.cart
         ),
-        OnBoard(R.drawable.third,
-            "Have a breakup? " +
-                    "We have made the corretion for you don't worry " +
-                    "Maybe someone is waiting for you!",
+        OnBoard(
+            "Have a break up?",
+            "We have made the correction for you don't worry. Maybe someone is waiting for you",
+            R.raw.edalatipour
         ),
-        OnBoard(R.drawable.four,
-            "It's Funs and Many more",
-
-            )
+        OnBoard(
+            "It's Funs and Many more", "",
+            R.raw.tiktok
+        )
     )
 
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnBoardingViewHolder {
-        return OnBoardingViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnBoardViewHolder {
+        return OnBoardViewHolder(
             ItemOnBoardBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -41,20 +44,23 @@ class OnBoardAdapter( private val onClick: () -> Unit) : RecyclerView.Adapter<On
         )
     }
 
-    override fun onBindViewHolder(holder: OnBoardingViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: OnBoardViewHolder, position: Int) {
         holder.bind(data[position])
     }
 
-    override fun getItemCount(): Int = data.size
+    override fun getItemCount() = data.size
 
-    inner class OnBoardingViewHolder(private val binding: ItemOnBoardBinding) :
+    inner class OnBoardViewHolder(private val binding: ItemOnBoardBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(onBoard: OnBoard) {
-            binding.tvDesc.text=onBoard.title
-            onBoard.image?.let { binding.imgBoard.setImageResource(it) }
-            binding.btnStart.isVisible=adapterPosition==data.lastIndex
+            binding.apply {
+                onBoard.image.let { imgBoard.setAnimation(it) }
+                tvTittle.text = onBoard.title
+                tvDescription.text = onBoard.desc
+            }
+            binding.btnStart.isVisible = adapterPosition == data.lastIndex
             binding.btnStart.setOnClickListener {
-                onClick()
+                onStartClick()
             }
         }
     }

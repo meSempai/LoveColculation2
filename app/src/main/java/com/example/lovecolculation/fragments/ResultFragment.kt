@@ -10,6 +10,7 @@ import com.example.lovecolculation.remote.LoveModel
 import com.geektech.lovecalculator.databinding.FragmentResultBinding
 
 
+@Suppress("CAST_NEVER_SUCCEEDS", "DEPRECATION")
 class ResultFragment : Fragment() {
     private lateinit var binding: FragmentResultBinding
     override fun onCreateView(

@@ -11,41 +11,44 @@ import com.example.lovecolculation.ui.adapter.OnBoardAdapter
 import com.geektech.lovecalculator.R
 import com.geektech.lovecalculator.databinding.FragmentOnBoardBinding
 import dagger.hilt.android.AndroidEntryPoint
+import me.relex.circleindicator.CircleIndicator3
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class
-OnBoardFragment: Fragment() {
+class OnBoardFragment : Fragment() {
 
-    lateinit var binding : FragmentOnBoardBinding
-    lateinit var adapter: OnBoardAdapter
-
+    private lateinit var binding: FragmentOnBoardBinding
+    private lateinit var adapter: OnBoardAdapter
     @Inject
     lateinit var pref: Pref
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
-        binding = FragmentOnBoardBinding.inflate(inflater,container,false)
+        binding = FragmentOnBoardBinding.inflate(inflater, container, false)
+        pref = Pref(requireContext())
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        adapter= OnBoardAdapter(this::onClick)
-
+        adapter = OnBoardAdapter(this::onStartClick)
         binding.viewPager.adapter = adapter
-        binding.indicator.setViewPager(binding.viewPager)
-        adapter.registerAdapterDataObserver(binding.indicator.adapterDataObserver)
-
+        setIndicator()
         if (pref.isUserSeen()){
             findNavController().navigate(R.id.calculateFragment)
         }
     }
 
-    fun onClick(){
-        pref.isUserSeenOnBoarding()
+    private fun setIndicator() {
+        val indicator: CircleIndicator3 = binding.indicator
+        val viewPager = binding.viewPager
+        indicator.setViewPager(viewPager)
+    }
+
+    private fun onStartClick() {
+        pref.saveUserSeen()
         findNavController().navigate(R.id.onBoardFragment)
     }
 }
